@@ -3,43 +3,121 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-ul, #myUL {
-  list-style-type: none;
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";
+ul.tree {
+	margin: 0;
+	padding: 2px 20px;
+	li {
+		list-style: none;
+		margin-left: -15px;
+		position: relative;
+    
+    
+		input {
+			cursor: pointer;
+			height: 1em;
+			left: 0;
+			margin-left: 0;
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			width: 2em;
+			z-index: 2;
+			&:checked+ul {
+				height: auto;
+				margin: 0px 0px 0px -19px;
+				&:before {
+					content: "\f068"; //MINUS
+					font-family: Fontawesome;
+					font-size: 15px;
+					left: 0;
+					margin-right: 5px;
+					position: absolute;
+					top: 0;
+				}
+			}
+			&:checked+ul>li {
+				display: block;
+				left: -3px;
+				margin: 0 0 3px;
+				last-child {
+					margin: 0 0 .063em;
+				}
+			}
+		}
+		input+ul {
+			padding: 0 0 0 39px;
+			&:before {
+				content: "\f067"; //PLUS
+				font-family: Fontawesome;
+				font-size: 15px;
+				left: 0;
+				margin-right: 5px;
+				position: absolute;
+				top: 0;
+			}
+		}
+		input+ul>li {
+			display: none;
+			margin-left: -10px;
+			padding-left: 1px;
+		}
+		label {
+			cursor: pointer;
+			margin-bottom: 0;
+			margin-left: 17px;
+		}
+	}
+}
+ul.tree>li {
+	margin-left: -1px !important;
+	a {
+		color: #606061;
+		display: block;
+		text-decoration: none;
+		&:before {
+			content: ""; //HAMBURGER \f0c9
+			display: block;
+			float: left;
+			font-family: Fontawesome;
+			font-size: 15px;
+			margin-right: 5px;
+		}
+	}
+ 
+}
+ul.tree>li {
+ &>a:before {
+   content: "\f0c9"; //HAMBURGER \f0c9
+   display: block;
+			float: left;
+			font-family: Fontawesome;
+			font-size: 15px;
+			margin-right: 5px;
+  }
 }
 
-#myUL {
-  margin: 0;
-  padding: 0;
+ul.tree {
+  &>li>a>label {
+    margin-left: 0;
+  }
 }
 
-.caret {
-  cursor: pointer;
-  -webkit-user-select: none; /* Safari 3.1+ */
-  -moz-user-select: none; /* Firefox 2+ */
-  -ms-user-select: none; /* IE 10+ */
-  user-select: none;
+ul.tree {
+  &>li>ul>li>a>label:before,
+  &>li>ul>li>ul>li>a>label:before
+  {
+    content: "\f0c9"; //HAMBURGER \f0c9
+   display: block;
+			position: absolute;
+			font-family: Fontawesome;
+			font-size: 15px;
+			margin-right: 5px;
+    left: 0px;
+  }
 }
 
-.caret::before {
-  content: "\25B6";
-  color: black;
-  display: inline-block;
-  margin-right: 6px;
-}
-
-.caret-down::before {
-  -ms-transform: rotate(90deg); /* IE 9 */
-  -webkit-transform: rotate(90deg); /* Safari */'
-  transform: rotate(90deg);  
-}
-
-.nested {
-  display: none;
-}
-
-.active {
-  display: block;
-}
 </style>
 </head>
 <body>
@@ -48,26 +126,62 @@ ul, #myUL {
 <p>A tree view represents a hierarchical view of information, where each item can have a number of subitems.</p>
 <p>Click on the arrow(s) to open or close the tree branches.</p>
 
-<ul id="myUL">
-  <li><span class="caret">Beverages</span>
-    <ul class="nested">
-      <li>Water</li>
-      <li>Coffee</li>
-      <li><span class="caret">Tea</span>
-        <ul class="nested">
-          <li>Black Tea</li>
-          <li>White Tea</li>
-          <li><span class="caret">Green Tea</span>
-            <ul class="nested">
-              <li>Sencha</li>
-              <li>Gyokuro</li>
-              <li>Matcha</li>
-              <li>Pi Lo Chun</li>
+<ul class="tree">
+   
+   <li id="menu12">
+      <label for="menu12">
+      <a>2015</a>
+      </label>
+      <input checked="" id="menu12" value="" type="checkbox">
+      <ul>
+         <li id="menu13">
+            <label for="menu13"><a>December</a></label>
+            <input checked="" id="menu13" value="" type="checkbox">
+            <ul>
+               <li id="menu14">
+                  <a>
+                  <label for="menu14">Video</label>
+                  <input checked="" id="menu14" value="" type="checkbox">
+                  </a>
+               </li>
+              <li id="menu15">
+                  <a>
+                  <label for="menu14">Video</label>
+                  <input checked="" id="menu14" value="" type="checkbox">
+                  </a>
+               </li>
             </ul>
-          </li>
-        </ul>
-      </li>  
-    </ul>
+         </li>
+      </ul>
+   </li>
+   <li id="menu15">
+      <label for="menu15"><a>2014</a></label>
+      <input checked="" id="menu15" value="" type="checkbox">
+      <ul>
+        
+         <li id="menu17">
+            <label for="menu17"><a>October</a></label>
+            <input checked="" id="menu17" value="" type="checkbox">
+            <ul>
+               <li id="menu18">
+                  <a><label for="menu18">Video</label>
+                  <input checked="" id="menu18" value="" type="checkbox">
+                  </a>
+     
+               </li>
+              <li id="menu18">
+                  <a><label for="menu18">Video</label>
+                  <input checked="" id="menu18" value="" type="checkbox">
+                  </a>
+               </li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+  <li id="menu20">
+    <a><label for="menu20">2013</label>
+      <input checked="" id="menu20" value="" type="checkbox">
+    </a>
   </li>
 </ul>
 
